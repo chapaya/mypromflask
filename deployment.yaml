@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-prometheus-app
+  labels:
+    app: python-prometheus-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-prometheus-app
+  template:
+    metadata:
+      labels:
+        app: python-prometheus-app
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "8000"
+    spec:
+      containers:
+      - name: python-prometheus-app
+        image: your_dockerhub_username/python-prometheus-app:latest
+        ports:
+        - containerPort: 5000  # Flask app port
+        - containerPort: 8000  # Prometheus metrics port
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 3
+          periodSeconds: 3

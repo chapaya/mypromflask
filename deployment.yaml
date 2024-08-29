@@ -36,3 +36,24 @@ spec:
             port: 5000
           initialDelaySeconds: 3
           periodSeconds: 3
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-prometheus-app
+  labels:
+    app: python-prometheus-app
+spec:
+  selector:
+    app: python-prometheus-app
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 5000  # Flask app port
+    - name: metrics
+      protocol: TCP
+      port: 8000
+      targetPort: 8000  # Prometheus metrics port
+  type: ClusterIP

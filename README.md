@@ -10,4 +10,9 @@ Open:
 - http://localhost:5000/
 - http://localhost:8000/
 
+## Deploy on k8s ##
+
+- kubectl apply -f deployment.yaml
+- kubectl get pod
+
 # By Eran G #

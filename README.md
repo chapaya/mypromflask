@@ -7,5 +7,7 @@
 - docker run -p 8000:8000 -p 5000:5000 chapaya/python-prometheus-app
 
 Open:
-http://localhost:5000/
-http://localhost:8000/
+- http://localhost:5000/
+- http://localhost:8000/
+
+# By Eran G #

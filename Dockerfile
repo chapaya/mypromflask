@@ -1,21 +1,18 @@
-from flask import Flask
-from prometheus_client import start_http_server, Counter, Summary
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-app = Flask(__name__)
+# Set the working directory in the container
+WORKDIR /app
 
-# Prometheus metrics to track
-REQUEST_COUNT = Counter('request_count', 'Total number of requests')
-REQUEST_LATENCY = Summary('request_latency_seconds', 'Request latency')
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-@app.route('/')
-def hello_world():
-    REQUEST_COUNT.inc()  # Increment the request count
-    with REQUEST_LATENCY.time():
-        return "Hi from my flask Prometheus container!"
+# Install the required Python packages
+RUN pip install --no-cache-dir prometheus_client flask
 
-if __name__ == '__main__':
-    # Start Prometheus metrics server on port 8000
-    start_http_server(8000)
-    # Start Flask application on port 5000
-    app.run(host='0.0.0.0', port=5000)
+# Expose port 8000 for Prometheus metrics and 5000 for the Flask app
+EXPOSE 8000
+EXPOSE 5000
 
+# Define the command to run the application
+CMD ["python", "app.py"]

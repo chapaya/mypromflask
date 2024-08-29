@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: python-prometheus-app
-        image: your_dockerhub_username/python-prometheus-app:latest
+        image: chapaya/python-prometheus-app:latest
         ports:
         - containerPort: 5000  # Flask app port
         - containerPort: 8000  # Prometheus metrics port

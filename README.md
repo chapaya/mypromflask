@@ -20,22 +20,22 @@ Open:
 
 # By Eran G #
 
-#!/bin/sh
-#deploy helm values in rancher
-echo "Show contexts ..."
-kubectl config get-contexts
-echo
-kubectl get po
-echo
-echo "Deploy helm ..."
-helm upgrade my-prom-stack kube-prometheus-stack -f kube-prometheus-stack/values.yaml --reset-values
-echo
-kubectl get po
-echo
-echo "Delete the pods.."
-kubectl delete po prometheus-my-prom-stack-kube-prometh-prometheus-0
-kubectl delete po alertmanager-my-prom-stack-kube-prometh-alertmanager-0
-echo
-echo "Show the pods..."
-sleep 5
-kubectl get po
+	#!/bin/sh
+	#deploy helm values in rancher
+	echo "Show contexts ..."
+	kubectl config get-contexts
+	echo
+	kubectl get po
+	echo
+	echo "Deploy helm ..."
+	helm upgrade my-prom-stack kube-prometheus-stack -f kube-prometheus-stack/values.yaml --reset-values
+	echo
+	kubectl get po
+	echo
+	echo "Delete the pods.."
+	kubectl delete po prometheus-my-prom-stack-kube-prometh-prometheus-0
+	kubectl delete po alertmanager-my-prom-stack-kube-prometh-alertmanager-0
+	echo
+	echo "Show the pods..."
+	sleep 5
+	kubectl get po

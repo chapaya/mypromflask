@@ -39,3 +39,12 @@ Open:
 	echo "Show the pods..."
 	sleep 5
 	kubectl get po
+
+# Create helm chart
+- helm create python-prometheus-app-by-helm
+- Create templates/deployment.yaml, templates/serivce.yaml,values.yaml
+- helm install python-prometheus-app-by-helm ./python-prometheus-app
+- or with custom-values.yaml : helm install python-prometheus-app-by-helm ./python-prometheus-app -f custom-values.yaml
+- helm ls
+- update in needed : helm upgarde python-prometheus-app-by-helm ./python-prometheus-app
+- uninstall : helm uninstall python-prometheus-app-by-helm

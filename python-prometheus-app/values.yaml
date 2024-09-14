@@ -1,0 +1,20 @@
+replicaCount: 2
+
+appName: python-prometheus-app
+
+image:
+  repository: chapaya/python-prometheus-app
+  tag: latest
+
+containerPort: 5000  # Flask app port
+metricsPort: 8000    # Prometheus metrics port
+
+livenessProbe:
+  initialDelaySeconds: 3
+  periodSeconds: 3
+
+readinessProbe:
+  initialDelaySeconds: 3
+  periodSeconds: 3
+
+servicePort: 80

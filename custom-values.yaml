@@ -1,0 +1,7 @@
+replicaCount: 2
+image:
+  repository: chapaya/python-prometheus-app
+  tag: latest
+containerPort: 6000
+metricsPort: 9000
+servicePort: 8080
